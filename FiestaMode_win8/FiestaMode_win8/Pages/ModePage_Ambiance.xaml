@@ -1,0 +1,60 @@
+﻿<local:ModePage
+    x:Class="FiestaMode.Pages.ModePage_Ambiance"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:FiestaMode.Pages"
+    xmlns:viewmodels="using:FiestaMode.ViewModels"
+    xmlns:Controls="using:FiestaMode.Controls"
+    xmlns:converters="using:FiestaMode.Converters"
+    xmlns:ConverterLib="using:ConverterLib"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    >
+
+    <Page.Resources>
+        <ConverterLib:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    </Page.Resources>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Pivot Title="Ambiance">
+            <PivotItem Header="Colors">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="107*"/>
+                        <RowDefinition Height="44*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0" x:Name="listBox" ItemsSource="{Binding AmbianceColors}" SelectionChanged="listBox_SelectionChanged" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle Fill="{Binding Color, Converter={StaticResource ColorToBrushConverter}}" Margin="5" />
+                                    <TextBlock Text="{Binding Text}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" Foreground="Black"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock Text="Speed" Grid.Row="1" FontSize="50" Margin="15,0,0,0" Grid.RowSpan="2"/>
+                    <Slider x:Name="speedSlider" Value="{Binding AmbianceSpeed}" SmallChange="1" LargeChange="10" Maximum="1" Grid.Row="1" Margin="0,70,0,0" VerticalAlignment="Top" Height="84" Grid.RowSpan="2" Foreground="{StaticResource PhoneAccentBrush}"/>
+                    <TextBlock Text="Scale" Grid.Row="2" FontSize="50" Margin="15,0,0,0"/>
+                    <Slider x:Name="scaleSlider" Value="{Binding AmbianceScale}" SmallChange="0.001" Maximum="3" Grid.Row="2" Margin="0,70,0,0" VerticalAlignment="Top" Height="84" Grid.RowSpan="2" LargeChange="0.1"/>
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item two-->
+            <PivotItem Header="Timer">
+                <Controls:TimerControl x:Name="timerControl" StartTimer="onStartTimer_Clicked" />
+            </PivotItem>
+
+            <!--Pivot item three-->
+            <PivotItem Header="Fiesta">
+                <Button x:Name="fiestaButton" Content="Fiesta!" FontSize="50" Click="fiestaButton_Click" />
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+
+</local:ModePage>

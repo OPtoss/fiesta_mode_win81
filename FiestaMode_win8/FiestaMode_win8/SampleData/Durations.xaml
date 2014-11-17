@@ -1,0 +1,25 @@
+﻿<vm:ColorsModel 
+    xmlns:vm="using:FiestaMode.ViewModels">
+
+    <vm:ColorsModel.AllColors>
+
+        <vm:ColorItem Text="Red" Color="Red"/>
+        <vm:ColorItem Text="Orange" Color="Orange"/>
+        <vm:ColorItem Text="Yellow" Color="Yellow"/>
+        <vm:ColorItem Text="Green" Color="Green"/>
+        <vm:ColorItem Text="Blue" Color="Blue"/>
+        <vm:ColorItem Text="Purple" Color="Purple"/>
+        <vm:ColorItem Text="Magenta" Color="Magenta"/>
+        <vm:ColorItem Text="Aqua" Color="Aqua"/>
+        <vm:ColorItem Text="Beige" Color="Beige"/>
+        <vm:ColorItem Text="Coral" Color="Coral"/>
+        <vm:ColorItem Text="DeepSkyBlue" Color="DeepSkyBlue"/>
+        <vm:ColorItem Text="Fuchsia" Color="Fuchsia"/>
+        <vm:ColorItem Text="Goldenrod" Color="Goldenrod"/>
+        <vm:ColorItem Text="Honeydew" Color="Honeydew"/>
+        <vm:ColorItem Text="NavajoWhite" Color="NavajoWhite"/>
+        <vm:ColorItem Text="Lavender" Color="Lavender"/>
+
+    </vm:ColorsModel.AllColors>
+       
+</vm:ColorsModel>

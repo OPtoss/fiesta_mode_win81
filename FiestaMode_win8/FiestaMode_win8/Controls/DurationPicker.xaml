@@ -1,0 +1,29 @@
+﻿<UserControl
+    x:Class="FiestaMode.Controls.DurationPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FiestaMode.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:FiestaMode.Controls"
+    mc:Ignorable="d"
+>
+
+
+
+    <Grid Height="550">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+
+        <controls:ListPicker x:Name="hoursList" />
+
+        <controls:ListPicker x:Name="minutesList" Grid.Column="1" />
+
+        <controls:ListPicker x:Name="secondsList" Grid.Column="2" />
+
+    </Grid>
+</UserControl>

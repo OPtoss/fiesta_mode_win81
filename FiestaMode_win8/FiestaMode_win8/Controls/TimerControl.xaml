@@ -1,0 +1,19 @@
+﻿<Grid x:Class="FiestaMode.Controls.TimerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:FiestaMode.Converters"
+    xmlns:controls="using:FiestaMode.Controls"
+    mc:Ignorable="d"
+   >
+    <Grid.RowDefinitions>
+        <RowDefinition Height="218*"/>
+        <RowDefinition Height="449*"/>
+    </Grid.RowDefinitions>
+    <Button x:Name="durationButton" Content="00:00:00" FontSize="70" Click="durationButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Normal"/>
+
+    <Button x:Name="startTimerButton" Content="Start" Click="startTimerButton_Click" FontSize="50" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+
+</Grid>

@@ -1,0 +1,42 @@
+﻿<local:ModePage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:local="using:FiestaMode.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:FiestaMode.Converters"
+    xmlns:ConverterLib="using:ConverterLib"
+    xmlns:Controls="using:FiestaMode.Controls"
+    x:Class="FiestaMode.ModePage_Rainbow"
+    xmlns:viewmodels="clr-namespace:FiestaMode.ViewModels"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignData ../SampleData/Colors.xaml}" 
+    >
+    
+    <Page.Resources>
+        <ConverterLib:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+    </Page.Resources>
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Pivot Title="Rainbow">
+            <PivotItem Header="Speed">
+                <Grid>
+                    <Slider x:Name="speedSlider" Value="{Binding RainbowSpeed}" SmallChange="0.001" LargeChange="0.1" Maximum="1" VerticalAlignment="Top" Height="84" Grid.RowSpan="2" Foreground="{StaticResource PhoneAccentBrush}" ValueChanged="speedSlider_ValueChanged" ManipulationCompleted="speedSlider_ManipulationCompleted" StepFrequency="0.001"/>
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item two-->
+            <PivotItem Header="Timer">
+                <Controls:TimerControl x:Name="timerControl" StartTimer="onStartTimer_Clicked" />
+            </PivotItem>
+
+            <!--Pivot item three-->
+            <PivotItem Header="Fiesta">
+                <Button x:Name="fiestaButton" Content="Fiesta!" FontSize="50" Click="fiestaButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+
+</local:ModePage>

@@ -1,0 +1,25 @@
+﻿<vm:MainViewModel 
+    xmlns:vm="using:FiestaMode.ViewModels">
+
+    <vm:MainViewModel.Items>
+
+        <vm:ItemViewModel 
+            Image="../Images/rgb.png" 
+            LineOne="Single Color" 
+            LineTwo="Single solid color"/>
+        <vm:ItemViewModel 
+            Image="../Images/rgb.png" 
+            LineOne="Player Color" 
+            LineTwo="Different color for each player"/>
+        <vm:ItemViewModel 
+            Image="../Images/rgb.png" 
+            LineOne="Rainbow" 
+            LineTwo="Hue shift with rotation" />
+        <vm:ItemViewModel 
+            Image="../Images/rgb.png" 
+            LineOne="Poker" 
+            LineTwo="Player colors and cycling dealer" />
+
+    </vm:MainViewModel.Items>
+       
+</vm:MainViewModel>

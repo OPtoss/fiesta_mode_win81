@@ -1,0 +1,170 @@
+﻿<local:ModePage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:local="using:FiestaMode.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:FiestaMode.Converters"
+    xmlns:ConverterLib="using:ConverterLib"
+    xmlns:Controls="using:FiestaMode.Controls"
+    x:Class="FiestaMode.ModePage_PlayerColor"
+    xmlns:viewmodels="clr-namespace:FiestaMode.ViewModels"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignData ../SampleData/Colors.xaml}" 
+    >
+
+    <local:ModePage.Resources>
+
+        <ConverterLib:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+
+        <Style 
+            x:Key="OctagonSection" 
+            TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Viewbox>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <PointerDownThemeAnimation TargetName="ButtonRoot"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonPolygon"
+                                                                           Storyboard.TargetProperty="Fill">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="Black"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        
+                            <Grid x:Name="ButtonRoot">
+                                <Polygon x:Name="ButtonPolygon"
+                                    Fill="{TemplateBinding Background}"
+                                    Points="0,0,20,50,140,50,160,0">
+                                </Polygon>
+                                <TextBlock Text="{TemplateBinding Content}" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="Black" FontSize="30" FontWeight="Bold">
+                                    <TextBlock.RenderTransform>
+                                        <CompositeTransform TranslateY="3"/>
+                                    </TextBlock.RenderTransform>
+                                </TextBlock>
+                            </Grid>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </local:ModePage.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Pivot Title="PlayerColors">
+            <PivotItem Header="Colors" Margin="14,28,10,0">
+                <Grid Margin="0,56,-0.167,-85.833">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="415*"/>
+                        <RowDefinition Height="188*"/>
+                    </Grid.RowDefinitions>
+                    <Viewbox RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Viewbox.RenderTransform>
+                            <CompositeTransform ScaleX="1.05" ScaleY="1.05"/>
+                        </Viewbox.RenderTransform>
+                        <Grid Width="450" Height="450">
+                            <Button Style="{StaticResource OctagonSection}"
+                                    DataContext="{Binding AllColors[0]}"
+                                    Tapped="Color_Tapped"
+                                    Background="{Binding Color, Converter={StaticResource ColorToBrushConverter}}" 
+                                    Content="{Binding Text}"
+                                    Width="160" Height="50" BorderThickness="0" Margin="145,10,145,382" HorizontalAlignment="Center" IsDoubleTapEnabled="False" IsRightTapEnabled="False" >
+                            </Button>
+                            <Button Style="{StaticResource OctagonSection}" 
+                                    DataContext="{Binding Path=AllColors[1]}"
+                                    Tapped="Color_Tapped"
+                                    Content="{Binding Text}" 
+                                    Background="{Binding Color, Converter={StaticResource ColorToBrushConverter}}"
+                                    Height="50" Width="160"  BorderThickness="0" RenderTransformOrigin="0.512,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="269.01,63.521,0,328.978" >
+                                <Button.RenderTransform>
+                                    <CompositeTransform Rotation="45"/>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button Style="{StaticResource OctagonSection}" 
+                                    DataContext="{Binding Path=AllColors[2]}"
+                                    Tapped="Color_Tapped"
+                                    Content="{Binding Text}"
+                                    Background="{Binding Color, Converter={StaticResource ColorToBrushConverter}}"
+                                    Height="50" Width="160"  BorderThickness="0" RenderTransformOrigin="0.512,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="318,189.25,-28,203.25" HorizontalAlignment="Center">
+                                <Button.RenderTransform>
+                                    <CompositeTransform Rotation="90"/>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button Style="{StaticResource OctagonSection}" 
+                                    DataContext="{Binding Path=AllColors[3]}"
+                                    Tapped="Color_Tapped"
+                                    Content="{Binding Text}"
+                                    Background="{Binding Color, ConverterParameter=Color, Converter={StaticResource ColorToBrushConverter}}"
+                                    Height="50" Width="160"  BorderThickness="0" RenderTransformOrigin="0.512,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="265.279,313.143,0,79.357">
+                                <Button.RenderTransform>
+                                    <CompositeTransform Rotation="135"/>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button Style="{StaticResource OctagonSection}" 
+                                    DataContext="{Binding Path=AllColors[4]}"
+                                    Tapped="Color_Tapped"
+                                    Content="{Binding Text}"
+                                    Background="{Binding Color, ConverterParameter=Color, Converter={StaticResource ColorToBrushConverter}}"
+                                    Height="50" Width="160"  BorderThickness="0" RenderTransformOrigin="0.512,0.5" Margin="140,365,150,27" HorizontalAlignment="Center">
+                                <Button.RenderTransform>
+                                    <CompositeTransform Rotation="180"/>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button Style="{StaticResource OctagonSection}" 
+                                    DataContext="{Binding Path=AllColors[5]}"
+                                    Tapped="Color_Tapped"
+                                    Content="{Binding Text}"
+                                    Background="{Binding Color, ConverterParameter=Color, Converter={StaticResource ColorToBrushConverter}}"
+                                    Height="50" Width="160"  BorderThickness="0" RenderTransformOrigin="0.512,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="15.893,311.379,0,81.12">
+                                <Button.RenderTransform>
+                                    <CompositeTransform Rotation="225"/>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button Style="{StaticResource OctagonSection}" 
+                                    DataContext="{Binding Path=AllColors[6]}"
+                                    Tapped="Color_Tapped"
+                                    Content="{Binding Text}" 
+                                    Background="{Binding Color, ConverterParameter=Color, Converter={StaticResource ColorToBrushConverter}}"
+                                    Height="50" Width="160"  BorderThickness="0" RenderTransformOrigin="0.512,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="-33.001,185.851,323.001,206.648" HorizontalAlignment="Center">
+                                <Button.RenderTransform>
+                                    <CompositeTransform Rotation="270"/>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button Style="{StaticResource OctagonSection}" 
+                                    DataContext="{Binding Path=AllColors[7]}"
+                                    Tapped="Color_Tapped"
+                                    Content="{Binding Text}"
+                                    Background="{Binding Color, ConverterParameter=Color, Converter={StaticResource ColorToBrushConverter}}"
+                                    Height="50" Width="160"  BorderThickness="0" RenderTransformOrigin="0.512,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="18.967,61.803,0,330.696">
+                                <Button.RenderTransform>
+                                    <CompositeTransform Rotation="315"/>
+                                </Button.RenderTransform>
+                            </Button>
+                        </Grid>
+                    </Viewbox>
+                </Grid>
+            </PivotItem>
+
+            <!--Pivot item two-->
+            <PivotItem Header="Timer">
+                <Controls:TimerControl x:Name="timerControl" StartTimer="onStartTimer_Clicked" />
+            </PivotItem>
+
+            <!--Pivot item three-->
+            <PivotItem Header="Fiesta">
+                <Button x:Name="fiestaButton" Content="Fiesta!" FontSize="50" Click="fiestaButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </PivotItem>
+        </Pivot>
+    </Grid>
+
+</local:ModePage>

@@ -1,0 +1,15 @@
+﻿<vm:PokerModel
+    xmlns:vm="using:FiestaMode.ViewModels">
+
+    <vm:PokerModel.Players>
+        <vm:PokerPlayer Text="1" PokerColor="Yellow"  IsInGame="True"/>
+        <vm:PokerPlayer Text="2" PokerColor="Green"  IsInGame="True"/>
+        <vm:PokerPlayer Text="3" PokerColor="Blue"  IsInGame="True"/>
+        <vm:PokerPlayer Text="4" PokerColor="Purple" IsInGame="True"/>
+        <vm:PokerPlayer Text="5" PokerColor="Magenta"  IsInGame="False"/>
+        <vm:PokerPlayer Text="6" PokerColor="Orange"  IsInGame="True"/>
+        <vm:PokerPlayer Text="7" PokerColor="Olive"  IsInGame="False"/>
+        <vm:PokerPlayer Text="8" PokerColor="Pink"  IsInGame="True"/>
+    </vm:PokerModel.Players>
+
+</vm:PokerModel>
